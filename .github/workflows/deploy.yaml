@@ -6,10 +6,16 @@ on:
       - main
 
 jobs:
-  deploy-codigofacilito:
+  first_job:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - run: echo "Deploying Codigo Facilito..."
-      - run: echo "Deployment completed successfully!"
-      - run: echo "Deployment completed successfully master!"
+      - name: Hola Mundo
+        run: echo "Hola Mundo"
+  
+  second_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hola Mundo 2
+        run: echo "Hola Mundo 2"
