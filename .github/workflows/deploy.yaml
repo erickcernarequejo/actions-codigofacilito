@@ -14,8 +14,14 @@ jobs:
       ENVIRONMENT: production
 
     steps:
-      - name: Hola Mundo
-        run: echo "Hola Mundo ${{ env.ENVIRONMENT }}"
+      - name: Working directory
+        run: ls -al
+      
+      - name: Action
+        uses: actions/checkout@v4
+
+      - name: Working dir after action
+        run: ls -al
   
   second_job:
     needs: first_job
