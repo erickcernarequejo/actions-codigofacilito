@@ -1,0 +1,15 @@
+name: "Deploy Codigo Facilito"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-codigofacilito:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Deploying Codigo Facilito..."
+      - run: echo "Deployment completed successfully!"
+      - run: echo "Deployment completed successfully master!"
