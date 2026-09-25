@@ -23,4 +23,15 @@ jobs:
         with:
           name: archivo-test
           path: test.log
+          
+  second_job:
+    name: "Segundo Job"
+    runs-on: ubuntu-latest
+    needs: first_job
+
+    steps:
+      - name: Descargar artefacto
+        uses: actions/download-artifact@v4
+        with:
+          name: archivo-test
         
