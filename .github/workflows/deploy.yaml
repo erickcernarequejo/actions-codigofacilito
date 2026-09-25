@@ -7,6 +7,7 @@ on:
 
 jobs:
   first_job:
+    name: "Primer Job"
     runs-on: ubuntu-latest
 
     env:
