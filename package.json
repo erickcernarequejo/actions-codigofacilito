@@ -1,0 +1,11 @@
+{
+  "name": "actions-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aplicación estática para practicar CI/CD con GitHub Actions y Pages",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/validate-site.js"
+  },
+  "engines": { "node": ">=20" }
+}
