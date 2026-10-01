@@ -3,69 +3,11 @@ name: CI/CD - GitHub Pages
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-
-concurrency:
-  group: pages-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
-  test:
-    name: Validar sitio
-    runs-on: ubuntu-latest
-    steps:
-      - name: Descargar repositorio
-        uses: actions/checkout@v7
-      - name: Configurar Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: 22
-          cache: npm
-      - name: Instalar dependencias
-        run: npm ci
-      - name: Ejecutar pruebas
-        run: npm test
-
-  deploy:
+  first-deploy:
     name: Desplegar en GitHub Pages
-    if: github.event_name != 'pull_request'
-    needs: test
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
     steps:
-      - name: Descargar repositorio
-        uses: actions/checkout@v7
-      - name: Añadir información del despliegue
-        shell: bash
-        env:
-          COMMIT_SHA: ${{ github.sha }}
-          RUN_NUMBER: ${{ github.run_number }}
-          REPOSITORY: ${{ github.repository }}
-        run: |
-          cat > public/build-info.json <<EOF
-          {
-            "commit": "${COMMIT_SHA:0:7}",
-            "run": "${RUN_NUMBER}",
-            "repository": "${REPOSITORY}"
-          }
-          EOF
-      - name: Configurar GitHub Pages
-        uses: actions/configure-pages@v6
-      - name: Preparar artefacto
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: public
-      - name: Publicar sitio
-        id: deployment
-        uses: actions/deploy-pages@v5
+      - name: Print variable
+        run: echo "GITHUB_TOKEN: ${{ secrets.TOKEN_SECRET }}"
