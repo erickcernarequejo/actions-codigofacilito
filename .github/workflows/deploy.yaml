@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print variable
-        run: echo "GITHUB_TOKEN: ${{ secrets.TOKEN_SECRET }}"
+        run: echo "${{ secrets.TOKEN_SECRET }}"
